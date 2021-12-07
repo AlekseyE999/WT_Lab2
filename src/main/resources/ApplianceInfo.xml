@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<appliences>
-    <oven>
-        <price>520</price>
-        <capacity>32</capacity>
-        <depth>60</depth>
-        <height>45</height>
-        <width>60</width>
-    </oven>
-    <refrigerator>
-        <price>1200</price>
-        <height>180</height>
-        <width>100</width>
-	<overall_capacity>1030</overall_capacity>
-    </refrigerator>
-    <refrigerator>
-        <price>520</price>
-        <height>180</height>
-        <width>100</width>
-	<overall_capacity>1040</overall_capacity>
-    </refrigerator>
+<appliances>
     <laptop>
         <price>1300</price>
         <system_memory>1000</system_memory>
@@ -31,11 +12,30 @@
         <height>45</height>
         <width>68</width>
     </oven>
-    <oven>
+	    <refrigerator>
+        <price>1200</price>
+        <height>180</height>
+        <width>100</width>
+	<overall_capacity>1030</overall_capacity>
+    </refrigerator>
+    <refrigerator>
+        <price>520</price>
+        <height>180</height>
+        <width>100</width>
+	<overall_capacity>1040</overall_capacity>
+    </refrigerator>
+	    <oven>
+        <price>520</price>
+        <capacity>32</capacity>
+        <depth>60</depth>
+        <height>45</height>
+        <width>60</width>
+    </oven>
+	    <oven>
         <price>540</price>
         <capacity>33</capacity>
         <depth>60</depth>
         <height>40</height>
         <width>70</width>
     </oven>
-</appliences>
+</appliances>

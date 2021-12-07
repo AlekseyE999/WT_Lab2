@@ -11,15 +11,15 @@ public class Refrigerator extends Appliance{
     /**
      *
      * @param price refrigerators price.
-     * @param overallCapacity refrigerators overall capacity.
+     * @param overall_Capacity refrigerators overall capacity.
      * @param height refrigerators height.
      * @param width refrigerators width.
      */
-    public Refrigerator(int price, int overallCapacity, int height, int width) {
+    public Refrigerator(int price, int overall_Capacity, int height, int width) {
         super(price);
         this.Height = height;
         this.Width = width;
-        this.OverallCapacity = overallCapacity;
+        this.OverallCapacity = overall_Capacity;
     }
 
     /**
@@ -55,5 +55,14 @@ public class Refrigerator extends Appliance{
         sb.append(", height = ").append(this.getHeight());
         sb.append('}');
         return sb.toString();
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Refrigerator that = (Refrigerator) o;
+        return OverallCapacity == that.OverallCapacity
+                && Height == that.Height && Width == that.Width;
     }
 }

@@ -1,5 +1,8 @@
 package by.tc.task01.entity;
 
+import java.util.Comparator;
+import java.util.Objects;
+
 public class Appliance {
     private int Price;
 
@@ -16,16 +19,24 @@ public class Appliance {
      *
      * @return appliance price
      */
-    public int getPrice(){
-        return this.Price;
+    public int getPrice() {
+        return Price;
     }
 
     /**
-     * Sets price.
+     * Sets cost.
      *
-     * @param price that sets appliance cost
+     * @param price that sets appliance price
      */
-    public void setPrice(int price){
+    public void setPrice(int price) {
         this.Price = price;
+    }
+
+    /**
+     * @return object hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(Price);
     }
 }

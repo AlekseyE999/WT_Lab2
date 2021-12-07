@@ -5,6 +5,7 @@ import by.tc.task01.entity.Appliance;
 import by.tc.task01.dao.impl.exception.ApplianceException;
 
 import by.tc.task01.entity.*;
+import by.tc.task01.entity.criteria.Criteria;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -81,14 +82,14 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 	 * @throws ApplianceException - if there are mistakes while finding appliances
 	 */
 	@Override
-	public List<Appliance> findByCriteria(String category) throws ApplianceException {
+	public List<Appliance> findByCriteria(Criteria category) throws ApplianceException {
 		if (this.Appliances == null) {
 			LoadAppliance();
 		}
 
 		return this.Appliances.stream().
-				filter(appliance -> appliance.getClass().
-						getSimpleName().equals(category)).collect(Collectors.toList());
+				filter(appliance -> appliance.getClass().getSimpleName().
+						equals(category)).toList();
 	}
 
 	/**
@@ -106,7 +107,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 		int smallerPrice = Integer.MAX_VALUE;
 		for (var appliance : this.Appliances){
 			if (smallerPrice > appliance.getPrice()){
-				smallerPrice = appliance.getPrice();
+				smallerPrice = (int) appliance.getPrice();
 				list = new ArrayList<Appliance>();
 				list.add(appliance);
 			}
@@ -117,4 +118,27 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 		return list;
 	}
 
+	@Override
+	public List<Appliance> retrieveAppliances() throws ApplianceException {
+		List<Appliance> appliances = new ArrayList<>();
+		NodeList applianceNodeList = parseXml();
+		ApplianceFactory factory = ApplianceFactory.getInstance();
+		ApplianceTypes applianceType;
+		for (int i = 0; i < applianceNodeList.getLength(); i++) {
+			Node node = applianceNodeList.item(i);
+			if (node.getNodeType() == node.ELEMENT_NODE) {
+				Element applianceElement = (Element) node;
+				applianceType = ApplianceTypes.valueOf(getFormattedApplianceType(applianceElement.getTagName()));
+				Appliance appliance = factory.getAppliance(String.valueOf(applianceType), applianceElement);
+				appliances.add(appliance);
+			}
+		}
+		return appliances;
+	}
+
+	private static String getFormattedApplianceType(String applianceType) {
+		final String UNDERSCORE = "_";
+		final String HYPHEN = "-";
+		return applianceType.toUpperCase().replace(HYPHEN, UNDERSCORE);
+	}
 }

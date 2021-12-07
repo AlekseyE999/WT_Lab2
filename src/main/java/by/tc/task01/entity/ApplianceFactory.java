@@ -2,12 +2,12 @@ package by.tc.task01.entity;
 
 import by.tc.task01.dao.impl.exception.ApplianceException;
 import by.tc.task01.entity.criteria.SearchCriteria;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.sql.Ref;
-import java.util.Locale;
 
 public class ApplianceFactory {
 
@@ -44,20 +44,19 @@ public class ApplianceFactory {
 
     private Appliance getApplianceFromXml(String applianceType, Element element) {
         Appliance appliance;
-        switch (applianceType) {
-            case "oven" -> {
-                appliance = (Oven) createOven(element);
-            }
-            case "laptop" -> {
+        if (applianceType == "oven") {
+            appliance = (Oven) createOven(element);
+        } else {
+            if (applianceType == "laptop") {
                 appliance = (Laptop) createLaptop(element);
-            }
-            case "refrigerator" -> {
-                appliance = (Refrigerator) createRefrigerator(element);
-            }
-            default -> {
-                appliance = null;
+            } else {
+                if (applianceType == "refrigerator") {
+                    appliance = (Refrigerator) createRefrigerator(element);
+                }
+                 else appliance = null;
             }
         }
+
         return appliance;
     }
 

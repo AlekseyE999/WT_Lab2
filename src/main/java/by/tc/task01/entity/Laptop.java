@@ -48,4 +48,6 @@ public class Laptop extends Appliance{
     public String getCpu() {
         return Cpu;
     }
+
+
 }

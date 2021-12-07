@@ -1,10 +1,9 @@
 package by.tc.task01.entity;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 
 public class Oven extends Appliance{
-    private final int Capacity;
+    private int Capacity;
     private int Depth;
     private int Height;
     private int Width;
@@ -70,5 +69,15 @@ public class Oven extends Appliance{
         sb.append(", height = ").append(this.getHeight());
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Oven oven = (Oven) o;
+        return Capacity == oven.Capacity && Depth == oven.Depth
+                && Height == oven.Height && Width == oven.Width;
     }
 }

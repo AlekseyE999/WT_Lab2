@@ -2,6 +2,8 @@ package by.tc.task01.dao;
 
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.dao.impl.exception.ApplianceException;
+import by.tc.task01.entity.criteria.Criteria;
+
 import java.util.List;
 
 public interface ApplianceDAO {
@@ -11,7 +13,7 @@ public interface ApplianceDAO {
 	 * @return appliances founded.
 	 * @throws ApplianceException - if there are mistakes while finding appliances
 	 */
-	List<Appliance> findByCriteria(String category) throws ApplianceException;
+	List<Appliance> findByCriteria(Criteria category) throws ApplianceException;
 
 	/**
 	 *
@@ -19,4 +21,12 @@ public interface ApplianceDAO {
 	 * @throws ApplianceException - if there are mistakes while finding appliances.
 	 */
 	List<Appliance> findCheapest() throws ApplianceException;
+
+	/**
+	 * Ret appliances list.
+	 *
+	 * @return all appliances.
+	 * @throws ApplianceException while extracting appliances
+	 */
+	List<Appliance> retrieveAppliances() throws ApplianceException;
 }
