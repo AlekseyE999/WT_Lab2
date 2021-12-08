@@ -8,9 +8,16 @@ import by.tc.task01.service.ApplianceService;
 import by.tc.task01.service.ServiceFactory;
 
 import java.util.List;
-
+/**
+ * The type Main.
+ */
 public class Main {
 
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 */
 	public static void main(String[] args) {
 		try {
 			List<Appliance> appliances;

@@ -11,6 +11,9 @@ import by.tc.task01.service.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Appliance service.
+ */
 public class ApplianceServiceImpl implements ApplianceService{
 
 	public List<Appliance> findByCriteria(Criteria criteria) throws ApplianceException {
