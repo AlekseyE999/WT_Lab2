@@ -1,12 +1,9 @@
 package by.tc.task01.entity;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Refrigerator extends Appliance{
-    private int OverallCapacity;
-    private int Height;
-    private int Width;
+    private int overallCapacity;
+    private int height;
+    private int width;
 
     /**
      *
@@ -17,9 +14,9 @@ public class Refrigerator extends Appliance{
      */
     public Refrigerator(int price, int overall_Capacity, int height, int width) {
         super(price);
-        this.Height = height;
-        this.Width = width;
-        this.OverallCapacity = overall_Capacity;
+        this.height = height;
+        this.width = width;
+        this.overallCapacity = overall_Capacity;
     }
 
     /**
@@ -27,7 +24,7 @@ public class Refrigerator extends Appliance{
      * @return the overallCapacity
      */
     public int getOverallCapacity() {
-        return OverallCapacity;
+        return overallCapacity;
     }
 
     /**
@@ -35,7 +32,7 @@ public class Refrigerator extends Appliance{
      * @return the height
      */
     public int getHeight() {
-        return Height;
+        return height;
     }
 
     /**
@@ -43,7 +40,7 @@ public class Refrigerator extends Appliance{
      * @return the width
      */
     public int getWidth() {
-        return Width;
+        return width;
     }
 
     @Override
@@ -62,7 +59,7 @@ public class Refrigerator extends Appliance{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Refrigerator that = (Refrigerator) o;
-        return OverallCapacity == that.OverallCapacity
-                && Height == that.Height && Width == that.Width;
+        return overallCapacity == that.overallCapacity
+                && height == that.height && width == that.width;
     }
 }

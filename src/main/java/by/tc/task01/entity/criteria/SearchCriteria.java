@@ -65,6 +65,7 @@ public final class SearchCriteria {
 		}
 
 	}
+
 	private void SearchCriteria() {
 	}
 }

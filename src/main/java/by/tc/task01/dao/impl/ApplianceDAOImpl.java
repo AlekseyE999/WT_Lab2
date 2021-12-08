@@ -20,14 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 public class ApplianceDAOImpl implements ApplianceDAO {
 
 
 	private final String PATH;
-	private List<Appliance> Appliances;
-	private DocumentBuilder DocumentBuilder;
+	private List<Appliance> appliances;
+	private DocumentBuilder documentBuilder;
 
 	/**
 	 * Initialize instance of class ApplianceDAOImpl.
@@ -36,7 +35,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 		this.PATH = "src/main/resources/ApplianceInfo.xml";
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
-			this.DocumentBuilder = factory.newDocumentBuilder();
+			this.documentBuilder = factory.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		}
@@ -56,15 +55,14 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 				appliances.add(appliance);
 			}
 		}
-
-		this.Appliances = appliances;
+		this.appliances = appliances;
 	}
 
 	private NodeList parseXml() throws ApplianceException {
 		Document document;
 		Element root;
 		try {
-			document = this.DocumentBuilder.parse(this.PATH);
+			document = this.documentBuilder.parse(this.PATH);
 			root = document.getDocumentElement();
 		} catch (IOException e) {
 			System.err.printf("Error while reading file %s. %s%n", this.PATH, e.getMessage());
@@ -84,7 +82,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 	 */
 	@Override
 	public List<Appliance> findByCriteria(Criteria category) throws ApplianceException {
-		if (this.Appliances == null) {
+		if (this.appliances == null) {
 			LoadAppliance();
 		}
 		List<Appliance> appliances = new ArrayList<>();
@@ -118,13 +116,13 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 	 */
 	@Override
 	public List<Appliance> findCheapest() throws ApplianceException {
-		if (this.Appliances == null) {
+		if (this.appliances == null) {
 			LoadAppliance();
 		}
 
 		var list = new ArrayList<Appliance>();
 		int smallerPrice = Integer.MAX_VALUE;
-		for (var appliance : this.Appliances) {
+		for (var appliance : this.appliances) {
 			if (smallerPrice > appliance.getPrice()) {
 				smallerPrice = (int) appliance.getPrice();
 				list = new ArrayList<Appliance>();
@@ -163,7 +161,7 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 	private NodeList parseXmlByCriteria(Criteria criteria) throws ApplianceException {
 		Document document;
 		try {
-			document = DocumentBuilder.parse(PATH);
+			document = documentBuilder.parse(PATH);
 			Element root = document.getDocumentElement();
 			return root.getElementsByTagName(criteria.getGroupSearchName().toLowerCase(Locale.ROOT));
 		} catch (IOException e) {
@@ -180,6 +178,5 @@ public class ApplianceDAOImpl implements ApplianceDAO {
 		}
 		Node node = nodeList.item(0);
 		return node.getTextContent();
-
 	}
 }

@@ -4,7 +4,16 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Appliance {
-    private int Price;
+    private int price;
+
+    /**
+     * Gets price.
+     *
+     * @return appliance price
+     */
+    public int getPrice() {
+        return price;
+    }
 
     /**
      * Initialize fields.
@@ -15,21 +24,12 @@ public class Appliance {
     }
 
     /**
-     * Gets price.
-     *
-     * @return appliance price
-     */
-    public int getPrice() {
-        return Price;
-    }
-
-    /**
      * Sets cost.
      *
      * @param price that sets appliance price
      */
     public void setPrice(int price) {
-        this.Price = price;
+        this.price = price;
     }
 
     /**
@@ -37,7 +37,7 @@ public class Appliance {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(Price);
+        return Objects.hash(price);
     }
 
     public static final Comparator<Appliance> compareByPrice = new Comparator<Appliance>() {

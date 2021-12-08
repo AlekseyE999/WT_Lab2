@@ -5,9 +5,7 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import java.sql.Ref;
+import org.w3c.dom.NodeList;;
 
 public class ApplianceFactory {
 
@@ -58,7 +56,6 @@ public class ApplianceFactory {
                 appliance = null;
             }
         }
-
         return appliance;
     }
 

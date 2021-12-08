@@ -1,12 +1,10 @@
 package by.tc.task01.entity;
 
-import java.util.Objects;
-
 public class Oven extends Appliance{
-    private int Capacity;
-    private int Depth;
-    private int Height;
-    private int Width;
+    private int capacity;
+    private int depth;
+    private int height;
+    private int width;
 
     /**
      * @param capacity ovens capacity.
@@ -17,10 +15,10 @@ public class Oven extends Appliance{
      */
     public Oven(int capacity, int depth, int width, int price, int height) {
         super(price);
-        this.Capacity = capacity;
-        this.Depth = depth;
-        this.Height = height;
-        this.Width = width;
+        this.capacity = capacity;
+        this.depth = depth;
+        this.height = height;
+        this.width = width;
     }
 
     /**
@@ -28,7 +26,7 @@ public class Oven extends Appliance{
      * @return the capacity.
      */
     public int getCapacity() {
-        return Capacity;
+        return capacity;
     }
 
     /**
@@ -36,7 +34,7 @@ public class Oven extends Appliance{
      * @return the depth.
      */
     public int getDepth() {
-        return Depth;
+        return depth;
     }
 
     /**
@@ -44,7 +42,7 @@ public class Oven extends Appliance{
      * @return the height.
      */
     public int getHeight() {
-        return Height;
+        return height;
     }
 
     /**
@@ -52,7 +50,7 @@ public class Oven extends Appliance{
      * @return the width.
      */
     public int getWidth() {
-        return Width;
+        return width;
     }
 
     /**
@@ -77,7 +75,7 @@ public class Oven extends Appliance{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Oven oven = (Oven) o;
-        return Capacity == oven.Capacity && Depth == oven.Depth
-                && Height == oven.Height && Width == oven.Width;
+        return capacity == oven.capacity && depth == oven.depth
+                && height == oven.height && width == oven.width;
     }
 }

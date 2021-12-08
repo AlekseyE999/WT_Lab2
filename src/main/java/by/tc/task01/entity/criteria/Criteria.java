@@ -26,10 +26,6 @@ public class Criteria {
 		return groupSearchName;
 	}
 
-	public void add(String searchCriteria, Object value) {
-		criteria.put(searchCriteria, value);
-	}
-
 	/**
 	 * Gets criteria.
 	 *

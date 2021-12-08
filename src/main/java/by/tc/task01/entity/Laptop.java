@@ -1,11 +1,8 @@
 package by.tc.task01.entity;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Laptop extends Appliance{
-    private int SystemMemory;
-    private String Cpu;
+    private int systemMemory;
+    private String cpu;
 
     /**
      * Initialize new instance of laptop class.
@@ -15,8 +12,25 @@ public class Laptop extends Appliance{
      */
     public Laptop(int systemMemory, int price, String cpu) {
         super(price);
-        this.Cpu = cpu;
-        this.SystemMemory = systemMemory;
+        this.cpu = cpu;
+        this.systemMemory = systemMemory;
+    }
+
+
+    /**
+     * Gets system memory.
+     * @return the system memory
+     */
+    public int getSystemMemory() {
+        return systemMemory;
+    }
+
+    /**
+     * Gets cpu.
+     * @return the cpu
+     */
+    public String getCpu() {
+        return cpu;
     }
 
     /**
@@ -33,21 +47,12 @@ public class Laptop extends Appliance{
         return sb.toString();
     }
 
-    /**
-     * Gets system memory.
-     * @return the system memory
-     */
-    public int getSystemMemory() {
-        return SystemMemory;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Laptop laptop = (Laptop) o;
+        return systemMemory == laptop.systemMemory && cpu == laptop.cpu;
     }
-
-    /**
-     * Gets cpu.
-     * @return the cpu
-     */
-    public String getCpu() {
-        return Cpu;
-    }
-
-
 }
