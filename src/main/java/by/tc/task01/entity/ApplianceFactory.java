@@ -31,7 +31,7 @@ public class ApplianceFactory {
      * @return appliance
      * @throws ApplianceException whether the document format is invalid
      */
-    public Appliance getAppliance(String applianceType, Object element) throws ApplianceException {
+    public Appliance getAppliance(ApplianceTypes applianceType, Object element) throws ApplianceException {
         Appliance appliance;
         if (element.getClass().getSimpleName().equals("DeferredElementImpl")) {
             appliance = getApplianceFromXml(applianceType, (Element) element);
@@ -42,18 +42,20 @@ public class ApplianceFactory {
         return appliance;
     }
 
-    private Appliance getApplianceFromXml(String applianceType, Element element) {
+    private Appliance getApplianceFromXml(ApplianceTypes applianceType, Element element) {
         Appliance appliance;
-        if (applianceType == "oven") {
-            appliance = (Oven) createOven(element);
-        } else {
-            if (applianceType == "laptop") {
+        switch (applianceType) {
+            case OVEN -> {
+                appliance = (Oven) createOven(element);
+            }
+            case LAPTOP -> {
                 appliance = (Laptop) createLaptop(element);
-            } else {
-                if (applianceType == "refrigerator") {
-                    appliance = (Refrigerator) createRefrigerator(element);
-                }
-                 else appliance = null;
+            }
+            case REFRIGERATOR -> {
+                appliance = (Refrigerator) createRefrigerator(element);
+            }
+            default -> {
+                appliance = null;
             }
         }
 

@@ -18,11 +18,11 @@ public class Main {
 			ApplianceService service = factory.getApplianceService();
 			Criteria laptopCriteria = new Criteria(SearchCriteria.Laptop.getTagName());
 			appliances = service.findByCriteria(laptopCriteria);
-			System.out.println("Laptops founded: ");
+			System.out.println("Найдены ноутбуки: ");
 			PrintApplianceInfo.print(appliances);
 			System.out.println();
 			appliances = service.findCheapest();
-			System.out.println("Appliances with minimal cost: ");
+			System.out.println("Товар с минимальной стоимостью: ");
 			PrintApplianceInfo.print(appliances);
 		} catch (ApplianceException e) {
 			System.err.println(e.getMessage());

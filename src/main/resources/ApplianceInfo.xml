@@ -2,7 +2,7 @@
 <appliances>
     <laptop>
         <price>1300</price>
-        <system_memory>1000</system_memory>
+        <system-memory>1000</system-memory>
         <cpu>1.2</cpu>
     </laptop>
     <oven>
@@ -16,13 +16,13 @@
         <price>1200</price>
         <height>180</height>
         <width>100</width>
-	<overall_capacity>1030</overall_capacity>
+	<overall-capacity>1030</overall-capacity>
     </refrigerator>
     <refrigerator>
         <price>520</price>
         <height>180</height>
         <width>100</width>
-	<overall_capacity>1040</overall_capacity>
+	<overall-capacity>1040</overall-capacity>
     </refrigerator>
 	    <oven>
         <price>520</price>

@@ -30,21 +30,22 @@ public class ApplianceServiceImpl implements ApplianceService{
 		if (appliances.isEmpty()) {
 			return appliances;
 		} else {
+			appliances.sort(Appliance.compareByPrice);
 			return getCheapest(appliances);
 		}
 	}
 
 	private List<Appliance> getCheapest(List<Appliance> appliances) {
-		List<Appliance> appliancesWithMinCost = new ArrayList<>();
+		List<Appliance> cheapest = new ArrayList<>();
 		Appliance appliance = appliances.get(0);
-		float minimalCost = appliance.getPrice();
+		int minimalCost = appliance.getPrice();
 		int i = 1;
 		while (appliance.getPrice() == minimalCost) {
-			appliancesWithMinCost.add(appliance);
+			cheapest.add(appliance);
 			appliance = appliances.get(i);
 			i++;
 		}
-		return appliancesWithMinCost;
+		return cheapest;
 	}
 
 }
